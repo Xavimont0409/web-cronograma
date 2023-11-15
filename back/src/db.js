@@ -4,16 +4,16 @@ const fs = require('fs');
 const path = require('path');
 const { URL_DATABASE, USER_DB, PASS_DB, PORT_DB, NAME_DB } = process.env;
 
-const sequelize = new Sequelize(`postgres://${USER_DB}:${PASS_DB}@${PORT_DB}/${NAME_DB}`, {
+/* const sequelize = new Sequelize(`postgres://${USER_DB}:${PASS_DB}@${PORT_DB}/${NAME_DB}`, {
+  logging: false, 
+  native: false, 
+}); */
+
+const sequelize = new Sequelize(URL_DATABASE, {
   logging: false, 
   native: false, 
 });
 
-/* const sequelize = new Sequelize(URL_DATABASE, {
-  logging: false, 
-  native: false, 
-});
- */
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -29,7 +29,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Level, Schedule, Student, TypeClass } = sequelize.models
+const { Level, Schedule, Student, TypeClass, User } = sequelize.models
 
 Student.belongsToMany(Schedule, { through: 'StudentSchedule' });
 Schedule.belongsToMany(Student, { through: 'StudentSchedule' });

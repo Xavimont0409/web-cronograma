@@ -5,6 +5,12 @@ const levelGet = async() => {
 }
 
 const levelPost = async(level_name) => {
+	const findLevel = await Level.findOne({
+		where: {
+			name: level_name
+		}
+	})
+	if(findLevel)  throw new Error("ALREADY_CATEGORY");
 	const newLevel = await Level.create({
 		level_name
 	})

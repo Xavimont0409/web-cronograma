@@ -5,6 +5,15 @@ const scheduleGet = async() => {
 }
 
 const schedulePost = async(start, end) => {
+	const findPost = await Schedule.findOne({
+		where : {
+			start,
+			end
+		}
+	})
+
+	if(findPost) throw new Error("ALREADY_CATEGORY");
+
 	const newSchedule = await Schedule.create({
 		start,
 		end
