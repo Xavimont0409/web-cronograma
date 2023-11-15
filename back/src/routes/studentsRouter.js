@@ -1,9 +1,9 @@
 const { Router } = require('express')
 const {
-	studentsHandlerGet,
-	studentsHandletPut,
-	studentsHandlerPost,
-	studentsHandlerDelete
+  studentsHandlerGet,
+  studentsHandletPut,
+  studentsHandlerPost,
+  studentsHandlerDelete
 } = require('../handlers/studentsHandlers')
 
 const studentsRouter = Router()

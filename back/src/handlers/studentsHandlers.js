@@ -1,17 +1,18 @@
+/* eslint-disable camelcase */
 const {
   studentsGet,
   studentsPost,
   studentsPut,
-  studentsDelete,
-} = require("../controllers/studentsController");
+  studentsDelete
+} = require('../controllers/studentsController')
 
 const studentsHandlerGet = async (req, res) => {
   try {
-    res.status(200).json(await studentsGet());
+    res.status(200).json(await studentsGet())
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 const studentsHandlerPost = async (req, res) => {
   const {
@@ -22,8 +23,8 @@ const studentsHandlerPost = async (req, res) => {
     email,
     phone,
     guardian_name,
-    type_of_relation,
-  } = req.body;
+    type_of_relation
+  } = req.body
   try {
     res
       .status(200)
@@ -38,11 +39,11 @@ const studentsHandlerPost = async (req, res) => {
           guardian_name,
           type_of_relation
         )
-      );
+      )
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 const studentsHandletPut = async (req, res) => {
   const {
@@ -54,8 +55,8 @@ const studentsHandletPut = async (req, res) => {
     email,
     phone,
     guardian_name,
-    type_of_relation,
-  } = req.body;
+    type_of_relation
+  } = req.body
   try {
     res
       .status(200)
@@ -71,24 +72,24 @@ const studentsHandletPut = async (req, res) => {
           guardian_name,
           type_of_relation
         )
-      );
+      )
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 const studentsHandlerDelete = async (req, res) => {
-  const { student_id } = req.body;
+  const { student_id } = req.body
   try {
-    res.status(200).json(await studentsDelete(student_id));
+    res.status(200).json(await studentsDelete(student_id))
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 module.exports = {
   studentsHandlerGet,
   studentsHandlerPost,
   studentsHandletPut,
-  studentsHandlerDelete,
-};
+  studentsHandlerDelete
+}

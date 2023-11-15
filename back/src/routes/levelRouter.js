@@ -1,14 +1,14 @@
-const { Router } = require("express");
+const { Router } = require('express')
 const {
   levelHandlerGet,
   levelHanlderPost,
-  levelHandlerDelete,
-} = require("../handlers/levelHandler");
+  levelHandlerDelete
+} = require('../handlers/levelHandler')
 
-const levelRouter = Router();
+const levelRouter = Router()
 
-levelRouter.get("/", levelHandlerGet);
-levelRouter.post("/", levelHanlderPost);
-levelRouter.delete("/", levelHandlerDelete);
+levelRouter.get('/', levelHandlerGet)
+levelRouter.post('/', levelHanlderPost)
+levelRouter.delete('/', levelHandlerDelete)
 
-module.exports = levelRouter;
+module.exports = levelRouter

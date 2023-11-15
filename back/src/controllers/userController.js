@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 const { User } = require('../db.js')
 const { encrypt, verified } = require('../utils/password.js')
 const { generateToken } = require('../utils/jwt.js')
 
 const createUser = async (user_name, password, email) => {
-  const findUser = await User.findOne({ where : { user_name, email }})
+  const findUser = await User.findOne({ where: { user_name, email } })
 
-  if (findUser) throw new Error("ALREADY_USER");
+  if (findUser) throw new Error('ALREADY_USER')
 
   const passHash = await encrypt(password)
 
@@ -17,12 +18,12 @@ const createUser = async (user_name, password, email) => {
 const loginUser = async (email, password) => {
   const checkUser = await User.findOne({ where: { email } })
 
-  if(!checkUser) throw new Error("NOT_FOUND_USER");
+  if (!checkUser) throw new Error('NOT_FOUND_USER')
 
-  const passwordHash = await checkUser.password;
-  const isCorrect = await verified(password, passwordHash);
+  const passwordHash = await checkUser.password
+  const isCorrect = await verified(password, passwordHash)
 
-  if (!isCorrect) throw new Error("NOT_FOUND_USER")
+  if (!isCorrect) throw new Error('NOT_FOUND_USER')
 
   const token = generateToken(checkUser.user_id)
 
@@ -34,7 +35,7 @@ const loginUser = async (email, password) => {
 }
 
 const userPut = async (user_id, user_name, email, password) => {
-  const checkUser = await User.findOne({ where: { user_id }})
+  const checkUser = await User.findOne({ where: { user_id } })
 
   const passHash = await encrypt(password)
 

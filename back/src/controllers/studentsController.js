@@ -1,8 +1,9 @@
-const { Students } = require("../db.js");
+/* eslint-disable camelcase */
+const { Students } = require('../db.js')
 
 const studentsGet = async () => {
-  return await Students.findAll();
-};
+  return await Students.findAll()
+}
 
 const studentsPost = async (
   student_name,
@@ -18,11 +19,11 @@ const studentsPost = async (
     where: {
       student_name,
       email,
-      phone,
-    },
-  });
+      phone
+    }
+  })
 
-  if (findStudents) throw new Error("ALREADY_CATEGORY");
+  if (findStudents) throw new Error('ALREADY_CATEGORY')
 
   const newStudents = await Students.create({
     student_name,
@@ -32,12 +33,11 @@ const studentsPost = async (
     email,
     phone,
     guardian_name,
-    type_of_relation,
-  });
+    type_of_relation
+  })
 
-
-  return newStudents;
-};
+  return newStudents
+}
 
 const studentsPut = async (
   student_id,
@@ -56,10 +56,10 @@ const studentsPut = async (
       email
     }
   })
-  if (checkStudents) throw new Error("ALREADY_CATEGORY");
+  if (checkStudents) throw new Error('ALREADY_CATEGORY')
 
   const findStudents = await Students.findOne({
-    where : { student_id }
+    where: { student_id }
   })
 
   if (student_name) findStudents.student_name = student_name
@@ -74,19 +74,19 @@ const studentsPut = async (
   const updateStudents = await findStudents.save()
 
   return updateStudents
-};
+}
 
 const studentsDelete = (student_id) => {
   return Students.destroy({
     where: {
-      student_id,
-    },
-  });
-};
+      student_id
+    }
+  })
+}
 
 module.exports = {
   studentsGet,
   studentsPost,
   studentsPut,
-  studentsDelete,
-};
+  studentsDelete
+}
