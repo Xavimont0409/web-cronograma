@@ -1,5 +1,5 @@
-import { usersStore } from "../../store/usersStore";
-import { useState, useEffect } from "react";
+import { usersStore } from '../../store/usersStore'
+import { useState, useEffect } from 'react'
 
 export function useUser () {
   const { users: usersData } = usersStore(state => state)
@@ -19,7 +19,7 @@ export function useUser () {
         guardianName: item.guardian_name,
         typeOfRelation: item.type_of_relation
       }))
-    setUsers(newUser)  
+    setUsers(newUser)
   }, [usersData])
   return {
     users

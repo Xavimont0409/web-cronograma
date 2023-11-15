@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
-import { usersStore } from '../../store/usersStore' 
+import { usersStore } from '../../store/usersStore'
 
 export function useFuntionUsers () {
   const {

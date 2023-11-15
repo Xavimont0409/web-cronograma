@@ -1,6 +1,6 @@
-import { useFuntionUsers } from "./useFuntionUser"; 
-import { usersStore } from "../../store/usersStore";
-import { useUser } from "./useUser";
+import { useFuntionUsers } from './useFuntionUser'
+import { usersStore } from '../../store/usersStore'
+import { useUser } from './useUser'
 
 export function useHookUser () {
   const {

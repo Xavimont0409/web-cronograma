@@ -4,7 +4,7 @@ const {
   VITE_BASE_URL_API
 } = import.meta.env
 
-const TOKEN = '' //Aqui va un token
+const TOKEN = ''
 /* request apis */
 export const getRequest = async (url) => {
   const config = {

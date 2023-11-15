@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 
 export const usersStore = create()((set, get) => {
-	const baseURL = 'user'
+  const baseURL = 'user'
 
-	return {
-		user: [],
+  return {
+    user: [],
     openModal: false,
     updateData: {},
     loading: false,
@@ -12,7 +12,7 @@ export const usersStore = create()((set, get) => {
     fullRows: 0,
     page: 1,
 
-		createAttention: async (data) => {
+    createAttention: async (data) => {
       const user = await createRequest(baseURL, data)
       set((state) => ({ user: [...state.user, attention.body.user] }))
     },
@@ -30,13 +30,11 @@ export const usersStore = create()((set, get) => {
       })
       set({ user: updateArray })
     },
-
-		getUser: async () => {
+    getUser: async () => {
       const user = await getRequest(baseURL)
       set({ user })
     },
-
-		showModal: async () => {
+    showModal: async () => {
       set({ openModal: true })
     },
 
@@ -47,5 +45,5 @@ export const usersStore = create()((set, get) => {
     setUpdateData: async (data) => {
       set({ updateData: data })
     }
-	}
+  }
 })
