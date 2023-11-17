@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-const { Students } = require('../db.js')
+const { Student } = require('../db.js')
 
 const studentsGet = async () => {
-  return await Students.findAll()
+  return await Student.findAll()
 }
 
 const studentsPost = async (
@@ -15,17 +15,15 @@ const studentsPost = async (
   guardian_name,
   type_of_relation
 ) => {
-  const findStudents = await Students.findOne({
+  const findStudents = await Student.findOne({
     where: {
-      student_name,
-      email,
-      phone
+      student_name
     }
   })
 
   if (findStudents) throw new Error('ALREADY_CATEGORY')
 
-  const newStudents = await Students.create({
+  const newStudents = await Student.create({
     student_name,
     studen_last_name,
     age,
@@ -50,7 +48,7 @@ const studentsPut = async (
   guardian_name,
   type_of_relation
 ) => {
-  const checkStudents = await Students.findOne({
+  const checkStudents = await Student.findOne({
     where: {
       student_name,
       email
@@ -58,7 +56,7 @@ const studentsPut = async (
   })
   if (checkStudents) throw new Error('ALREADY_CATEGORY')
 
-  const findStudents = await Students.findOne({
+  const findStudents = await Student.findOne({
     where: { student_id }
   })
 
@@ -77,7 +75,7 @@ const studentsPut = async (
 }
 
 const studentsDelete = (student_id) => {
-  return Students.destroy({
+  return Student.destroy({
     where: {
       student_id
     }

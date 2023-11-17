@@ -10,7 +10,7 @@ const userRouter = Router()
 
 userRouter.post('/', createUserPostHandler)
 userRouter.post('/', loginUserPostHandler)
-userRouter.update('/', updateUserHandler)
+userRouter.put('/', updateUserHandler)
 userRouter.delete('/', deleteUserHandler)
 
 module.exports = userRouter

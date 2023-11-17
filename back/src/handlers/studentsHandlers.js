@@ -11,6 +11,7 @@ const studentsHandlerGet = async (req, res) => {
     res.status(200).json(await studentsGet())
   } catch (error) {
     res.status(500).json(error)
+    console.log(error)
   }
 }
 
@@ -42,6 +43,7 @@ const studentsHandlerPost = async (req, res) => {
       )
   } catch (error) {
     res.status(500).json(error)
+    console.log(error)
   }
 }
 
@@ -75,6 +77,7 @@ const studentsHandletPut = async (req, res) => {
       )
   } catch (error) {
     res.status(500).json(error)
+    console.log(error)
   }
 }
 
@@ -84,6 +87,7 @@ const studentsHandlerDelete = async (req, res) => {
     res.status(200).json(await studentsDelete(student_id))
   } catch (error) {
     res.status(500).json(error)
+    console.log(error)
   }
 }
 
