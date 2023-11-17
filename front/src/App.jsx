@@ -3,6 +3,7 @@ import { Home } from './home/Home'
 import { Routes, Route } from 'react-router-dom'
 import Alumnos from './components/Studens/Students'
 import { Nav } from './components/Nav/Nav'
+import { Modal } from './utils/Modal'
 
 function App () {
   const [open, setOpen] = useState(true)
@@ -17,6 +18,7 @@ function App () {
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/students' element={<Alumnos />} />
+        <Route path='/modal' element={<Modal />} />
       </Routes>
     </div>
   )
