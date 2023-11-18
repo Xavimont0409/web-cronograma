@@ -1,25 +1,26 @@
-import { useState } from 'react'
-import Modal from '../../utils/Modal'
-import InputField from '../../utils/InputFiel'
-import InputSelect from '../../utils/InputSelect'
+import { useState } from "react";
+import { Modal } from "../../utils/Modal";
+import { InputFiel } from "../../utils/InputFiel";
+import { InputSelect } from "../../utils/InputSelect";
+import { useHookUser } from "../../hooks/Users/useHookUser";
 
-export default function Calendario () {
-  const [openModal, setOpenModal] = useState(false)
+export default function Calendario() {
+  const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
-    setOpenModal(true)
-  }
+    setOpenModal(true);
+  };
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const handleSubmit = (data) => {
-    // Handle logic to add or update a student with the provided data
-    console.log('Student data:', data)
-    // Close the modal after submitting the form
-    handleCloseModal()
-  }
+    console.log("Student data:", data);
+    handleCloseModal();
+  };
+
+  const { register, errors, control } = useHookUser();
 
   return (
     <div>
@@ -30,24 +31,32 @@ export default function Calendario () {
       {openModal && (
         <Modal
           closeModal={handleCloseModal}
-          title='Add/Update Student'
+          title="Add/Update Student"
           onSubmit={handleSubmit}
           className="grid grid-cols-3 grid-rows-3 gap-4"
         >
           {/* First Row */}
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
+            control={control}
             labelText="Name"
             name="name"
             placeholder="Enter the name"
             requiredText="This field is required"
           />
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
+            control={control}
             labelText="Last Name"
             name="lastName"
             placeholder="Enter the last name"
             requiredText="This field is required"
           />
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
             labelText="Guardian's Name"
             name="guardianName"
             placeholder="Enter the guardian's name"
@@ -55,13 +64,19 @@ export default function Calendario () {
           />
 
           {/* Second Row */}
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
+            control={control}
             labelText="Phone"
             name="phone"
             placeholder="Enter the phone number"
             requiredText="This field is required"
           />
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
+            control={control}
             labelText="Email"
             name="email"
             placeholder="Enter the email"
@@ -89,7 +104,10 @@ export default function Calendario () {
             ]}
             requiredText="This field is required"
           />
-          <InputField
+          <InputFiel
+            register={register}
+            errors={errors}
+            control={control}
             labelText="Level"
             name="level"
             placeholder="Enter the level"
