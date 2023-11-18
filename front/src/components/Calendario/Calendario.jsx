@@ -95,7 +95,7 @@ export default function Calendario () {
           {/* Buttons */}
           <div className='col-span-3 flex justify-end items-center mt-4'>
             <Button text='Aceptar' type='submit' className='btn-primary' icon={<Save />} />
-            <Button text='Cancelar' type='button' className='btn-cancel' icon={<Return />} />
+            <Button text='Cancelar' type='button' handleClick={handleCloseModal} className='btn-cancel' icon={<Return />} />
           </div>
         </Modal>
       )}

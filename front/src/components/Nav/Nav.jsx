@@ -20,14 +20,14 @@ export function Nav ({ handleOpen, open }) {
             ? <nav className='flex flex-col items-start gap-4'>
               <Link to='/home' className='flex gap-2 items-center justify-center'><Appointment /> Home</Link>
               <Link to='/students' className='flex gap-2 items-center justify-center'><Order />Alumnos</Link>
-              <Link to='/*' className='flex gap-2 items-center justify-center'><Patient />Otra vista</Link>
+              <Link to='/calendario' className='flex gap-2 items-center justify-center'><Patient />Calendario</Link>
               <Link to='/*' className='flex gap-2 items-center justify-center'><Doctor />Otra vista</Link>
               <Link to='/*' className='flex gap-2 items-center justify-center'><Setting />Otra vista</Link>
             </nav>
             : <nav className='flex flex-col items-start gap-4'>
               <Link to='/home' className='flex gap-2 items-center justify-center'><Appointment /></Link>
               <Link to='/students' className='flex gap-2 items-center justify-center'><Order /></Link>
-              <Link to='/*' className='flex gap-2 items-center justify-center'><Patient /></Link>
+              <Link to='/calendario' className='flex gap-2 items-center justify-center'><Patient /></Link>
               <Link to='/*' className='flex gap-2 items-center justify-center'><Doctor /></Link>
               <Link to='/*' className='flex gap-2 items-center justify-center'><Setting /></Link>
             </nav>
