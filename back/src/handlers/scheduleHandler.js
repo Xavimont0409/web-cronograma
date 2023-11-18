@@ -23,9 +23,9 @@ const scheduleHandlerPost = async (req, res) => {
 }
 
 const scheduleHandlerDelete = async (req, res) => {
-  const { schedule_id } = req.body
+  const { scheduleId } = req.body
   try {
-    res.status(200).json(await scheduleDelete(schedule_id))
+    res.status(200).json(await scheduleDelete(scheduleId))
   } catch (error) {
     res.status(500).json(error)
   }

@@ -11,9 +11,9 @@ const paymentHandlerGet = async (req, res) => {
 }
 
 const paymentHandlerPost = async (req, res) => {
-  const { payment_name, payment_date } = req.body
+  const { paymentName, paymentDate } = req.body
   try {
-    res.status(200).json(await paymentPost(payment_name, payment_date))
+    res.status(200).json(await paymentPost(paymentName, paymentDate))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
@@ -21,9 +21,9 @@ const paymentHandlerPost = async (req, res) => {
 }
 
 const paymentHandlerDelete = async (req, res) => {
-  const { payment_id } = req.query
+  const { paymentId } = req.query
   try {
-    res.status(200).json(await paymentDelete(payment_id))
+    res.status(200).json(await paymentDelete(paymentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)

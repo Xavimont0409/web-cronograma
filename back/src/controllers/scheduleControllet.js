@@ -22,10 +22,10 @@ const schedulePost = async (start, end) => {
   return newSchedule
 }
 
-const scheduleDelete = async (schedule_id) => {
+const scheduleDelete = async (scheduleId) => {
   return await Schedule.destroy({
     where: {
-      schedule_id
+      schedule_id: scheduleId
     }
   })
 }

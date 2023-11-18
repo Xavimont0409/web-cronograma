@@ -14,18 +14,18 @@ const typeClassHandlerGet = async (req, res) => {
 }
 
 const typeClassHandlerPost = async (req, res) => {
-  const { type_class_name } = req.body
+  const { findTypeClass } = req.body
   try {
-    res.status(200).json(await typeClassPost(type_class_name))
+    res.status(200).json(await typeClassPost(findTypeClass))
   } catch (error) {
     res.status(500).json(error)
   }
 }
 
 const typeClassHandlerDelete = async (req, res) => {
-  const { type_class_id } = req.body
+  const { typeClassId } = req.body
   try {
-    res.status(200).json(await typeClassDelete(type_class_id))
+    res.status(200).json(await typeClassDelete(typeClassId))
   } catch (error) {
     res.status(500).json(error)
   }

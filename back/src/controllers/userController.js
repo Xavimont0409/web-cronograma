@@ -3,14 +3,14 @@ const { User } = require('../db.js')
 const { encrypt, verified } = require('../utils/password.js')
 const { generateToken } = require('../utils/jwt.js')
 
-const createUser = async (user_name, password, email) => {
-  const findUser = await User.findOne({ where: { user_name, email } })
+const createUser = async (userName, password, email) => {
+  const findUser = await User.findOne({ where: { user_name: userName, email } })
 
   if (findUser) throw new Error('ALREADY_USER')
 
   const passHash = await encrypt(password)
 
-  const registerNewUser = await User.create({ user_name, password: passHash, email })
+  const registerNewUser = await User.create({ user_name: userName, password: passHash, email })
 
   return registerNewUser
 }
@@ -34,12 +34,12 @@ const loginUser = async (email, password) => {
   return data
 }
 
-const userPut = async (user_id, user_name, email, password) => {
-  const checkUser = await User.findOne({ where: { user_id } })
+const userPut = async (userId, userName, email, password) => {
+  const checkUser = await User.findOne({ where: { user_id: userId } })
 
   const passHash = await encrypt(password)
 
-  if (user_name) checkUser.user_name = user_name
+  if (userName) checkUser.user_name = userName
   if (email) checkUser.email = email
   if (password) checkUser.password = passHash
 

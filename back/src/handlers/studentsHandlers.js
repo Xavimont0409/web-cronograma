@@ -16,11 +16,11 @@ const studentsHandlerGet = async (req, res) => {
 }
 
 const studentsHandlerPost = async (req, res) => {
-  const { student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id } = req.body
+  const { studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId } = req.body
   try {
     res
       .status(200)
-      .json(await studentsPost(student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id))
+      .json(await studentsPost(studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
@@ -28,11 +28,11 @@ const studentsHandlerPost = async (req, res) => {
 }
 
 const studentsHandletPut = async (req, res) => {
-  const { student_id, student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id } = req.body
+  const { studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId } = req.body
   try {
     res
       .status(200)
-      .json(await studentsPut(student_id, student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id))
+      .json(await studentsPut(studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
@@ -40,9 +40,9 @@ const studentsHandletPut = async (req, res) => {
 }
 
 const studentsHandlerDelete = async (req, res) => {
-  const { student_id } = req.body
+  const { studentId } = req.body
   try {
-    res.status(200).json(await studentsDelete(student_id))
+    res.status(200).json(await studentsDelete(studentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)

@@ -37,16 +37,25 @@ const studentsGet = async () => {
   return allStudents
 }
 
-const studentsPost = async (student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, schedule_id, level_id, type_class_id, payment_id) => {
-  const findStudents = await Student.findOne({ where: { student_name } })
+const studentsPost = async (studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId) => {
+  const findStudents = await Student.findOne({ where: { student_name: studentName } })
 
   if (findStudents) throw new Error('ALREADY_STUDENTS')
 
-  const newStudents = await Student.create({ student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation })
-  const sheduleBdd = await Schedule.findAll({ where: { schedule_id } })
-  const levelBdd = await Level.findAll({ where: { level_id } })
-  const typeclassBdd = await TypeClass.findAll({ where: { type_class_id } })
-  const paymentBdd = await Payment.findAll({ where: { payment_id } })
+  const newStudents = await Student.create({
+    student_name: studentName,
+    studen_last_name: studenLastName,
+    age,
+    gender,
+    email,
+    phone,
+    guardian_name: guardianName,
+    type_of_relation: typeOfRelation
+  })
+  const sheduleBdd = await Schedule.findAll({ where: { schedule_id: sheduleId } })
+  const levelBdd = await Level.findAll({ where: { level_id: levelId } })
+  const typeclassBdd = await TypeClass.findAll({ where: { type_class_id: typeclassId } })
+  const paymentBdd = await Payment.findAll({ where: { payment_id: paymentId } })
 
   await newStudents.addSchedule(sheduleBdd)
   await newStudents.addLevel(levelBdd)
@@ -56,30 +65,30 @@ const studentsPost = async (student_name, studen_last_name, age, gender, email, 
   return newStudents
 }
 
-const studentsPut = async (student_id, student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation) => {
-  const checkStudents = await Student.findOne({ where: { student_name, email } })
+const studentsPut = async (studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation) => {
+  const checkStudents = await Student.findOne({ where: { student_name: studentName, email } })
   if (checkStudents) throw new Error('ALREADY_CATEGORY')
 
   const findStudents = await Student.findOne({
-    where: { student_id }
+    where: { student_id: studentId }
   })
 
-  if (student_name) findStudents.student_name = student_name
-  if (studen_last_name) findStudents.studen_last_name = studen_last_name
+  if (studentName) findStudents.student_name = studentName
+  if (studenLastName) findStudents.studen_last_name = studenLastName
   if (age) findStudents.age = age
   if (gender) findStudents.gender = gender
   if (email) findStudents.email = email
   if (phone) findStudents.phone = phone
-  if (guardian_name) findStudents.guardian_name = guardian_name
-  if (type_of_relation) findStudents.type_of_relation = type_of_relation
+  if (guardianName) findStudents.guardian_name = guardianName
+  if (typeOfRelation) findStudents.type_of_relation = typeOfRelation
 
   const updateStudents = await findStudents.save()
 
   return updateStudents
 }
 
-const studentsDelete = (student_id) => {
-  return Student.destroy({ where: { student_id } })
+const studentsDelete = (studentId) => {
+  return Student.destroy({ where: { student_id: studentId } })
 }
 
 module.exports = {
