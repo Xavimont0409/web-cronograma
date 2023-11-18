@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BackGroundImage from '../assets/BackGround/Headear/fondoHeadear.jpeg'
+import { levelStore } from '../store/levelStore'
+import { paymentStore } from '../store/paymentStore'
+import { scheduleStore } from '../store/scheduleStore'
+import { studentsStore } from '../store/studentsStore'
+import { typeClassStore } from '../store/typeClassStore'
 
 export function Home () {
+  const { getlevel } = levelStore(state => state)
+  const { getPayment } = paymentStore(state => state)
+  const { getSchedule } = scheduleStore(state => state)
+  const { getStudents } = studentsStore(state => state)
+  const { getTypeClass } = typeClassStore(state => state)
+
+  useEffect(() => {
+    getlevel()
+    getPayment()
+    getSchedule()
+    getStudents()
+    getTypeClass()
+  }, [getPayment, getSchedule, getStudents, getTypeClass, getlevel])
+
   return (
     <div className='h-screen bg-gray-50 flex flex-col items-center'>
       <section

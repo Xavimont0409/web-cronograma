@@ -1,8 +1,8 @@
-import { useFuntionUsers } from './useFuntionUser'
-import { usersStore } from '../../store/usersStore'
-import { useUser } from './useUser'
+import { useFuntionUsers } from './useFuntionStudents'
+import { studentsStore } from '../../store/studentsStore'
+import { useStudents } from './useStudents'
 
-export function useHookUser () {
+export function useHookStudents () {
   const {
     openModal,
     updateData,
@@ -10,7 +10,7 @@ export function useHookUser () {
     showModal,
     closeModal,
     setUpdateData
-  } = usersStore(state => state)
+  } = studentsStore(state => state)
 
   const {
     onSubmit,
@@ -20,7 +20,7 @@ export function useHookUser () {
     errors
   } = useFuntionUsers()
 
-  const { users } = useUser()
+  const { students } = useStudents()
 
   return {
     openModal,
@@ -34,6 +34,6 @@ export function useHookUser () {
     handleSubmit,
     control,
     errors,
-    users
+    students
   }
 }

@@ -1,12 +1,12 @@
-import { usersStore } from '../../store/usersStore'
+import { studentsStore } from '../../store/studentsStore'
 import { useState, useEffect } from 'react'
 
-export function useUser () {
-  const { users: usersData } = usersStore(state => state)
-  const [users, setUsers] = useState([])
+export function useStudents () {
+  const { students: studentsData } = studentsStore(state => state)
+  const [students, setStudents] = useState([])
 
   useEffect(() => {
-    const newUser = usersData
+    const newUser = studentsData
       ?.filter(item => item.status === true)
       ?.map(item => ({
         studentId: item.student_id,
@@ -19,9 +19,9 @@ export function useUser () {
         guardianName: item.guardian_name,
         typeOfRelation: item.type_of_relation
       }))
-    setUsers(newUser)
-  }, [usersData])
+    setStudents(newUser)
+  }, [studentsData])
   return {
-    users
+    students
   }
 }

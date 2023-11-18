@@ -1,20 +1,20 @@
 import { useForm } from 'react-hook-form'
-import { useEffect, useState } from 'react'
-import { usersStore } from '../../store/usersStore'
+// import { useEffect, useState } from 'react'
+import { studentsStore } from '../../store/studentsStore'
 
 export function useFuntionUsers () {
   const {
-    createAttention,
-    updateAttention,
+    createStudents,
+    updateStudents,
     closeModal
-  } = usersStore(state => state)
+  } = studentsStore(state => state)
   const { register, handleSubmit, control, formState: { errors } } = useForm()
 
   const onSubmit = async (values) => {
     try {
       values.editMode
-        ? await updateAttention(values)
-        : await createAttention(values)
+        ? await updateStudents(values)
+        : await createStudents(values)
       closeModal()
     } catch (error) {
       console.log(error)

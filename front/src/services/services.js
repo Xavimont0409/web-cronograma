@@ -1,48 +1,44 @@
 import axios from 'axios'
 
-const {
-  VITE_BASE_URL_API
-} = import.meta.env
-
-const TOKEN = ''
+// const TOKEN = ''
 /* request apis */
 export const getRequest = async (url) => {
-  const config = {
+  /* const config = {
     headers: { Authorization: `Bearer ${TOKEN}` }
-  }
-  const request = await axios.get(`${VITE_BASE_URL_API}${url}`, config)
+  } */
+  const request = await axios.get(`http://localhost:3001/${url}`)
   return request.data
 }
 
 export const createRequest = async (endpoint, data) => {
-  const config = {
+  /* const config = {
     headers: { Authorization: `Bearer ${TOKEN}` }
-  }
-  const request = await axios.post(`${VITE_BASE_URL_API}${endpoint}`, data, config)
+  } */
+  const request = await axios.post(`http://localhost:3001/${endpoint}`, data)
   return request.data
 }
 
 export const deleteRequest = async (endpoint, data) => {
-  const config = {
+  /* const config = {
     headers: { Authorization: `Bearer ${TOKEN}` },
     data
-  }
-  const request = await axios.delete(`${VITE_BASE_URL_API}${endpoint}`, config)
+  } */
+  const request = await axios.delete(`http://localhost:3001/${endpoint}`)
   return request.data
 }
 
 export const updateRequest = async (endpoint, data) => {
-  const config = {
+  /* const config = {
     headers: { Authorization: `Bearer ${TOKEN}` }
-  }
-  const request = await axios.put(`${VITE_BASE_URL_API}${endpoint}`, data, config)
+  } */
+  const request = await axios.put(`http://localhost:3001/${endpoint}`, data)
   return request.data
 }
 
 export const patchRequest = async (endpoint, data) => {
-  const config = {
+  /* const config = {
     headers: { Authorization: `Bearer ${TOKEN}` }
-  }
-  const request = await axios.patch(`${VITE_BASE_URL_API}${endpoint}`, data, config)
+  } */
+  const request = await axios.patch(`http://localhost:3001/${endpoint}`, data)
   return request.data
 }

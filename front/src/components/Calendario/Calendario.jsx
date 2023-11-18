@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Modal } from '../../utils/Modal'
 import { InputFiel } from '../../utils/InputFiel'
 import { InputSelect } from '../../utils/InputSelect'
-import { useHookUser } from '../../hooks/Users/useHookUser'
+import { useHookStudents } from '../../hooks/Students/useHookStudents'
 import { Button } from '../../utils/Button'
 import { Save, Return } from '../../icons/icons'
 
@@ -20,7 +20,7 @@ export default function Calendario () {
     control,
     errors
     // users
-  } = useHookUser()
+  } = useHookStudents()
   const [openModal, setOpenModal] = useState(false)
   const handleOpenModal = () => {
     setOpenModal(true)
