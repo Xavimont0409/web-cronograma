@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require('dotenv').config()
 const { Sequelize } = require('sequelize')
 const fs = require('fs')
@@ -29,7 +30,7 @@ const entries = Object.entries(sequelize.models)
 const capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]])
 sequelize.models = Object.fromEntries(capsEntries)
 
-const { Level, Schedule, Student, TypeClass, User } = sequelize.models
+const { Level, Schedule, Student, TypeClass, User, Payment } = sequelize.models
 
 Student.belongsToMany(Schedule, { through: 'StudentSchedule' })
 Schedule.belongsToMany(Student, { through: 'StudentSchedule' })
@@ -39,6 +40,9 @@ Level.belongsToMany(Student, { through: 'StudentLevel' })
 
 Student.belongsToMany(TypeClass, { through: 'StudentTypeClass' })
 TypeClass.belongsToMany(Student, { through: 'StudentTypeClass' })
+
+Student.belongsToMany(Payment, { through: 'StudentPayment' })
+Payment.belongsToMany(Student, { through: 'StudentPayment' })
 
 module.exports = {
   ...sequelize.models,

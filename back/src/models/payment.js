@@ -1,19 +1,19 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-  sequelize.define('Schedule', {
-    schedule_id: {
+  sequelize.define('Payment', {
+    payment_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    start: {
-      type: DataTypes.TIME,
+    payment_name: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    end: {
-      type: DataTypes.TIME,
+    payment_date: {
+      type: DataTypes.DATE,
       allowNull: false
     }
   },

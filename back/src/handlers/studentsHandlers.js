@@ -16,31 +16,11 @@ const studentsHandlerGet = async (req, res) => {
 }
 
 const studentsHandlerPost = async (req, res) => {
-  const {
-    student_name,
-    studen_last_name,
-    age,
-    gender,
-    email,
-    phone,
-    guardian_name,
-    type_of_relation
-  } = req.body
+  const { student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id } = req.body
   try {
     res
       .status(200)
-      .json(
-        await studentsPost(
-          student_name,
-          studen_last_name,
-          age,
-          gender,
-          email,
-          phone,
-          guardian_name,
-          type_of_relation
-        )
-      )
+      .json(await studentsPost(student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
@@ -48,33 +28,11 @@ const studentsHandlerPost = async (req, res) => {
 }
 
 const studentsHandletPut = async (req, res) => {
-  const {
-    student_id,
-    student_name,
-    studen_last_name,
-    age,
-    gender,
-    email,
-    phone,
-    guardian_name,
-    type_of_relation
-  } = req.body
+  const { student_id, student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id } = req.body
   try {
     res
       .status(200)
-      .json(
-        await studentsPut(
-          student_id,
-          student_name,
-          studen_last_name,
-          age,
-          gender,
-          email,
-          phone,
-          guardian_name,
-          type_of_relation
-        )
-      )
+      .json(await studentsPut(student_id, student_name, studen_last_name, age, gender, email, phone, guardian_name, type_of_relation, shedule_id, level_id, typeclass_id, payment_id))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
