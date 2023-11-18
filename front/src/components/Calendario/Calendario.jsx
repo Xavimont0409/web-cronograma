@@ -39,7 +39,6 @@ export default function Calendario() {
           <InputFiel
             register={register}
             errors={errors}
-            control={control}
             labelText="Name"
             name="name"
             placeholder="Enter the name"
@@ -48,7 +47,6 @@ export default function Calendario() {
           <InputFiel
             register={register}
             errors={errors}
-            control={control}
             labelText="Last Name"
             name="lastName"
             placeholder="Enter the last name"
@@ -67,7 +65,6 @@ export default function Calendario() {
           <InputFiel
             register={register}
             errors={errors}
-            control={control}
             labelText="Phone"
             name="phone"
             placeholder="Enter the phone number"
@@ -76,7 +73,6 @@ export default function Calendario() {
           <InputFiel
             register={register}
             errors={errors}
-            control={control}
             labelText="Email"
             name="email"
             placeholder="Enter the email"
@@ -85,6 +81,7 @@ export default function Calendario() {
           <InputSelect
             labelText="Class Type"
             name="classType"
+            control={control}
             options={[
               { value: "class1", name: "Class 1" },
               { value: "class2", name: "Class 2" },
@@ -97,6 +94,7 @@ export default function Calendario() {
           <InputSelect
             labelText="Payment Type"
             name="paymentType"
+            control={control}
             options={[
               { value: "payment1", name: "Payment 1" },
               { value: "payment2", name: "Payment 2" },
@@ -107,7 +105,6 @@ export default function Calendario() {
           <InputFiel
             register={register}
             errors={errors}
-            control={control}
             labelText="Level"
             name="level"
             placeholder="Enter the level"
