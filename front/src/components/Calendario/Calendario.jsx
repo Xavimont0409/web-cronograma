@@ -30,8 +30,8 @@ export default function Calendario () {
     setOpenModal(false)
   }
 
-  const handleSubmitForm = (data) => {
-    console.log('Student data:', data)
+  const onSubmitForm = (data) => {
+    console.log(data)
     handleCloseModal()
   }
 
@@ -53,7 +53,7 @@ export default function Calendario () {
 
       {/* Modal for adding or updating a student */}
       {openModal && (
-        <Modal closeModal={handleCloseModal} title='Add/Update Student' onSubmit={handleSubmit(handleSubmitForm)}>
+        <Modal closeModal={handleCloseModal} title='Add/Update Student' onSubmit={handleSubmit(onSubmitForm)}>
           {/* First Row */}
           <InputFiel
             register={register} errors={errors} labelText='Name' name='name'
@@ -79,13 +79,11 @@ export default function Calendario () {
           />
           <InputSelect
             labelText='Class Type' name='classType' control={control} options={optionsClassType}
-            requiredText='This field is required'
           />
 
           {/* Third Row */}
           <InputSelect
             labelText='Payment Type' name='paymentType' control={control} options={optionPayment}
-            requiredText='This field is required'
           />
           <InputFiel
             register={register} errors={errors} labelText='Level' name='level' placeholder='Enter the level'
@@ -94,7 +92,7 @@ export default function Calendario () {
 
           {/* Buttons */}
           <div className='col-span-3 flex justify-end items-center mt-4'>
-            <Button text='Aceptar' type='submit' className='btn-primary' icon={<Save />} />
+            <Button type='submit' text='registrar' className='btn-primary' icon={<Save />} />
             <Button text='Cancelar' type='button' handleClick={handleCloseModal} className='btn-cancel' icon={<Return />} />
           </div>
         </Modal>
