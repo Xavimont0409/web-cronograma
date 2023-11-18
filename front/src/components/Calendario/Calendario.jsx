@@ -36,14 +36,16 @@ export default function Calendario () {
   }
 
   const optionsClassType = [
-    { value: 'class1', name: 'Class 1' },
-    { value: 'class2', name: 'Class 2' }
+    { value: 0, name: '[TIPO DE CLASE]' },
+    { value: 1, name: 'Class 1' },
+    { value: 2, name: 'Class 2' }
     // Add more options as needed
   ]
 
   const optionPayment = [
-    { value: 'Payment 1', name: 'Payment 1' },
-    { value: 'Payment 2', name: 'Payment 2' }
+    { value: 0, name: '[PAGO]' },
+    { value: 1, name: 'Payment 1' },
+    { value: 2, name: 'Payment 2' }
     // Add more options as needed
   ]
   return (
