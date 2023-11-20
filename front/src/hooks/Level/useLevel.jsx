@@ -9,9 +9,11 @@ export function useLevel () {
     const newLevel = levelData
       ?.map(item => ({
         levelId: item.level_id,
-        levelName: String(item.level_name).toUpperCase()
+        levelName: String(item.level_name).toUpperCase(),
+        value: item.level_id,
+        name: String(item.level_name).toUpperCase()
       }))
-    newLevel.unshift({ spuId: 0, value: 0, name: '[NIVEL]' })
+    newLevel.unshift({ levelId: 0, value: 0, name: '[NIVEL]' })
     setLevel(newLevel)
   }, [levelData])
 

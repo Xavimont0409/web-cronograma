@@ -9,10 +9,12 @@ export function usePayment () {
     const newPayment = paymentData
       ?.map(item => ({
         paymentId: item.payment_id,
+        value: item.payment_id,
         paymentName: item.payment_name,
-        paymentDate: item.payment_date
+        paymentDate: item.payment_date,
+        name: item.payment_name
       }))
-    newPayment.unshift({ spuId: 0, value: 0, name: '[PAGO]' })
+    newPayment.unshift({ paymentId: 0, value: 0, name: '[PAGO]' })
     setPayment(newPayment)
   }, [paymentData])
 

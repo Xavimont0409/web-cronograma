@@ -7,7 +7,6 @@ export function useStudents () {
 
   useEffect(() => {
     const newUser = studentsData
-      ?.filter(item => item.status === true)
       ?.map(item => ({
         studentId: item.student_id,
         studentName: item.student_name,
@@ -17,7 +16,25 @@ export function useStudents () {
         email: item.email,
         phone: item.phone,
         guardianName: item.guardian_name,
-        typeOfRelation: item.type_of_relation
+        typeOfRelation: item.type_of_relation,
+        schedules: item.Schedules.map(item => ({
+          scheduleId: item.schedule_id,
+          start: item.start,
+          end: item.end
+        })),
+        levels: item.Levels.map(item => ({
+          levelId: item.level_id,
+          levelName: item.level_name
+        })),
+        typeClasses: item.TypeClasses.map(item => ({
+          typeClassId: item.type_class_id,
+          typeClassName: item.type_class_name
+        })),
+        payments: item.Payments.map(item => ({
+          paymentId: item.payment_id,
+          paymentName: item.payment_name,
+          paymentDate: item.payment_date
+        }))
       }))
     setStudents(newUser)
   }, [studentsData])

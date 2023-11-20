@@ -16,11 +16,11 @@ const studentsHandlerGet = async (req, res) => {
 }
 
 const studentsHandlerPost = async (req, res) => {
-  const { studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId } = req.body
+  const { studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId } = req.body
   try {
     res
       .status(200)
-      .json(await studentsPost(studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId))
+      .json(await studentsPost(studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)
@@ -28,11 +28,11 @@ const studentsHandlerPost = async (req, res) => {
 }
 
 const studentsHandletPut = async (req, res) => {
-  const { studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId } = req.body
+  const { studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId } = req.body
   try {
     res
       .status(200)
-      .json(await studentsPut(studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId))
+      .json(await studentsPut(studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId))
   } catch (error) {
     res.status(500).json(error)
     console.log(error)

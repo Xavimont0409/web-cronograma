@@ -3,41 +3,12 @@ const { Student, Schedule, Level, TypeClass, Payment } = require('../db.js')
 
 const studentsGet = async () => {
   const allStudents = await Student.findAll({
-    include: [
-      {
-        model: Schedule,
-        attributes: ['start', 'end'],
-        through: {
-          attributes: []
-        }
-      },
-      {
-        model: Level,
-        attributes: ['level_name'],
-        through: {
-          attributes: []
-        }
-      },
-      {
-        model: TypeClass,
-        attributes: ['type_class_name'],
-        through: {
-          attributes: []
-        }
-      },
-      {
-        model: Payment,
-        attributes: ['payment_name', 'payment_date'],
-        through: {
-          attributes: []
-        }
-      }
-    ]
+    include: [{ model: Schedule }, { model: Level }, { model: TypeClass }, { model: Payment }]
   })
   return allStudents
 }
 
-const studentsPost = async (studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, sheduleId, levelId, typeclassId, paymentId) => {
+const studentsPost = async (studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId) => {
   const findStudents = await Student.findOne({ where: { student_name: studentName } })
 
   if (findStudents) throw new Error('ALREADY_STUDENTS')
@@ -52,20 +23,25 @@ const studentsPost = async (studentName, studenLastName, age, gender, email, pho
     guardian_name: guardianName,
     type_of_relation: typeOfRelation
   })
-  const sheduleBdd = await Schedule.findAll({ where: { schedule_id: sheduleId } })
+  const scheduleBdd = await Schedule.findAll({ where: { schedule_id: scheduleId } })
   const levelBdd = await Level.findAll({ where: { level_id: levelId } })
   const typeclassBdd = await TypeClass.findAll({ where: { type_class_id: typeclassId } })
   const paymentBdd = await Payment.findAll({ where: { payment_id: paymentId } })
 
-  await newStudents.addSchedule(sheduleBdd)
+  await newStudents.addSchedule(scheduleBdd)
   await newStudents.addLevel(levelBdd)
   await newStudents.addTypeClass(typeclassBdd)
   await newStudents.addPayment(paymentBdd)
 
-  return newStudents
+  const userCreated = await Student.findOne({
+    where: { student_id: newStudents.student_id },
+    include: [{ model: Schedule }, { model: Level }, { model: TypeClass }, { model: Payment }]
+  })
+
+  return userCreated
 }
 
-const studentsPut = async (studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation) => {
+const studentsPut = async (studentId, studentName, studenLastName, age, gender, email, phone, guardianName, typeOfRelation, scheduleId, levelId, typeclassId, paymentId) => {
   const checkStudents = await Student.findOne({ where: { student_name: studentName, email } })
   if (checkStudents) throw new Error('ALREADY_CATEGORY')
 
@@ -82,9 +58,19 @@ const studentsPut = async (studentId, studentName, studenLastName, age, gender, 
   if (guardianName) findStudents.guardian_name = guardianName
   if (typeOfRelation) findStudents.type_of_relation = typeOfRelation
 
-  const updateStudents = await findStudents.save()
+  await findStudents.save()
 
-  return updateStudents
+  // Update relationships
+  if (scheduleId) await findStudents.setSchedules([scheduleId])
+  if (levelId) await findStudents.setLevels([levelId])
+  if (typeclassId) await findStudents.setTypeClasses([typeclassId])
+  if (paymentId) await findStudents.setPayments([paymentId])
+
+  const findUpdateStudents = await Student.findOne({
+    where: { student_id: studentId },
+    include: [{ model: Schedule }, { model: Level }, { model: TypeClass }, { model: Payment }]
+  })
+  return findUpdateStudents
 }
 
 const studentsDelete = (studentId) => {

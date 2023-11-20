@@ -9,6 +9,7 @@ export const levelStore = create()((set, get) => {
 
     getlevel: async () => {
       const level = await getRequest(baseUrl)
+      console.log(level)
       set({ level })
     }
   }

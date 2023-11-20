@@ -14,9 +14,9 @@ const typeClassHandlerGet = async (req, res) => {
 }
 
 const typeClassHandlerPost = async (req, res) => {
-  const { findTypeClass } = req.body
+  const { typeClassName } = req.body
   try {
-    res.status(200).json(await typeClassPost(findTypeClass))
+    res.status(200).json(await typeClassPost(typeClassName))
   } catch (error) {
     res.status(500).json(error)
   }

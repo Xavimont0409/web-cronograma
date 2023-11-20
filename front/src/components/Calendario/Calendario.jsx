@@ -1,104 +1,49 @@
-import { useState } from 'react'
-import { Modal } from '../../utils/Modal'
-import { InputFiel } from '../../utils/InputFiel'
-import { InputSelect } from '../../utils/InputSelect'
 import { useHookStudents } from '../../hooks/Students/useHookStudents'
+import { ModalCalendar } from './ModalCalendar'
 import { Button } from '../../utils/Button'
-import { Save, Return } from '../../icons/icons'
+import { useLevel } from '../../hooks/Level/useLevel'
+import { usePayment } from '../../hooks/Payment/usePayment'
+import { useSchedule } from '../../hooks/Schedule/useSchedule'
 
 export default function Calendario () {
+  const { level } = useLevel()
+  const { payment } = usePayment()
+  const { schedule } = useSchedule()
   const {
-    // openModal,
+    openModal,
     // updateData,
     // loading,
-    // showModal,
-    // closeModal,
-    // setUpdateData,
+    showModal,
+    closeModal,
+    setUpdateData,
     // onSubmit,
     register,
     handleSubmit,
     control,
     errors
-    // users
   } = useHookStudents()
-  const [openModal, setOpenModal] = useState(false)
+
   const handleOpenModal = () => {
-    setOpenModal(true)
+    setUpdateData({ editMode: false })
+    showModal()
   }
-
-  const handleCloseModal = () => {
-    setOpenModal(false)
-  }
-
-  const onSubmitForm = (data) => {
-    console.log(data)
-    handleCloseModal()
-  }
-
-  const optionsClassType = [
-    { value: 0, name: '[TIPO DE CLASE]' },
-    { value: 1, name: 'Class 1' },
-    { value: 2, name: 'Class 2' }
-    // Add more options as needed
-  ]
-
-  const optionPayment = [
-    { value: 0, name: '[PAGO]' },
-    { value: 1, name: 'Payment 1' },
-    { value: 2, name: 'Payment 2' }
-    // Add more options as needed
-  ]
   return (
     <div>
-      {/* Open the modal when clicking a button or link */}
-      <button onClick={handleOpenModal}>Add/Update Student</button>
-
-      {/* Modal for adding or updating a student */}
-      {openModal && (
-        <Modal closeModal={handleCloseModal} title='Add/Update Student' onSubmit={handleSubmit(onSubmitForm)}>
-          {/* First Row */}
-          <InputFiel
-            register={register} errors={errors} labelText='Name' name='name'
-            placeholder='Enter the name' requiredText='This field is required'
+      <Button text='registrar' type='submit' className='btn-primary' handleClick={handleOpenModal} />
+      {
+        openModal &&
+          <ModalCalendar
+            register={register}
+            handleSubmit={handleSubmit}
+            control={control}
+            errors={errors}
+            showModal={showModal}
+            closeModal={closeModal}
+            schedule={schedule}
+            level={level}
+            payment={payment}
           />
-          <InputFiel
-            register={register} errors={errors} labelText='Last Name' name='lastName'
-            placeholder='Enter the last name' requiredText='This field is required'
-          />
-          <InputFiel
-            register={register} errors={errors} labelText="Guardian's Name" name='guardianName'
-            placeholder="Enter the guardian's name" requiredText='This field is required'
-          />
-
-          {/* Second Row */}
-          <InputFiel
-            register={register} errors={errors} labelText='Phone' name='phone' placeholder='Enter the phone number'
-            requiredText='This field is required'
-          />
-          <InputFiel
-            register={register} errors={errors} labelText='Email' name='email'
-            placeholder='Enter the email' requiredText='This field is required'
-          />
-          <InputSelect
-            labelText='Class Type' name='classType' control={control} options={optionsClassType}
-          />
-
-          {/* Third Row */}
-          <InputSelect
-            labelText='Payment Type' name='paymentType' control={control} options={optionPayment}
-          />
-          <InputFiel
-            register={register} errors={errors} labelText='Level' name='level' placeholder='Enter the level'
-            requiredText='This field is required'
-          />
-
-          {/* Buttons */}
-          <div className='col-span-3 flex justify-end items-center mt-4'>
-            <Button type='submit' text='registrar' className='btn-primary' icon={<Save />} />
-            <Button text='Cancelar' type='button' handleClick={handleCloseModal} className='btn-cancel' icon={<Return />} />
-          </div>
-        </Modal>
-      )}
+      }
     </div>
   )
 }

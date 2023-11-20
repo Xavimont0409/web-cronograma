@@ -9,10 +9,12 @@ export function useSchedule () {
     const newSchedule = scheduleData
       ?.map(item => ({
         scheduleId: item.schedule_id,
+        value: item.schedule_id,
         start: item.start,
-        end: item.end
+        end: item.end,
+        name: `${item.start.slice(0, 5)} - ${item.end.slice(0, 5)}`
       }))
-    newSchedule.unshift({ spuId: 0, value: 0, name: '[HORARIO]' })
+    newSchedule.unshift({ scheduleId: 0, value: 0, name: '[HORARIO]' })
     setSchedule(newSchedule)
   }, [scheduleData])
 
