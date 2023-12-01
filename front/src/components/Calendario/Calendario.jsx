@@ -4,6 +4,7 @@ import { Button } from '../../utils/Button'
 import { useLevel } from '../../hooks/Level/useLevel'
 import { usePayment } from '../../hooks/Payment/usePayment'
 import { useSchedule } from '../../hooks/Schedule/useSchedule'
+import { CalendarTable } from './CalendarTable'
 
 export default function Calendario () {
   const { level } = useLevel()
@@ -28,22 +29,27 @@ export default function Calendario () {
     showModal()
   }
   return (
-    <div>
-      <Button text='registrar' type='submit' className='btn-primary' handleClick={handleOpenModal} />
-      {
-        openModal &&
-          <ModalCalendar
-            register={register}
-            handleSubmit={handleSubmit}
-            control={control}
-            errors={errors}
-            showModal={showModal}
-            closeModal={closeModal}
-            schedule={schedule}
-            level={level}
-            payment={payment}
-          />
-      }
+    <div className='w-full h-screen'>
+      <Button
+        text='registrar'
+        type='submit'
+        className='btn-primary'
+        handleClick={handleOpenModal}
+      />
+      <CalendarTable />
+      {openModal && (
+        <ModalCalendar
+          register={register}
+          handleSubmit={handleSubmit}
+          control={control}
+          errors={errors}
+          showModal={showModal}
+          closeModal={closeModal}
+          schedule={schedule}
+          level={level}
+          payment={payment}
+        />
+      )}
     </div>
   )
 }

@@ -18,7 +18,11 @@ export function ModalCalendar ({
   }
   return (
     <div>
-      <Modal onSubmit={handleSubmit(onSubmitForm)} closeModal={closeModal} title='Crear Alumno'>
+      <Modal
+        onSubmit={handleSubmit(onSubmitForm)}
+        closeModal={closeModal}
+        title='Crear Alumno'
+      >
         <ModalContent
           register={register}
           control={control}
@@ -28,8 +32,18 @@ export function ModalCalendar ({
           schedule={schedule}
         />
         <div className='flex gap-4'>
-          <Button text='registrar' icon={<Save />} type='submit' className='btn-primary' />
-          <Button text='cancelar' icon={<Return />} type='submit' className='btn-cancel' />
+          <Button
+            text='registrar'
+            icon={<Save />}
+            type='submit'
+            className='btn-primary'
+          />
+          <Button
+            text='cancelar'
+            icon={<Return />}
+            type='submit'
+            className='btn-cancel'
+          />
         </div>
       </Modal>
     </div>
