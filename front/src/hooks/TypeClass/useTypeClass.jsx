@@ -9,7 +9,9 @@ export function useTypeClass () {
     const newTypeClass = typeClassData
       ?.map(item => ({
         typeClassId: item.type_class_id,
-        typeClassName: item.type_class_name
+        typeClassName: item.type_class_name,
+        name: String(item.type_class_name).toUpperCase(),
+        value: item.type_class_id
       }))
     newTypeClass.unshift({ spuId: 0, value: 0, name: '[TIPO DE CLASE]' })
     setTypeClass(newTypeClass)

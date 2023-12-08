@@ -8,66 +8,81 @@ export function ModalContent ({
   errors,
   level,
   payment,
-  schedule
+  schedule,
+  typeClass,
+  handleChange,
+  setLevelId,
+  setTypeClassId,
+  handleChangeName
 }) {
+  const gender = [
+    { id: 0, name: '[GENERO]', value: 0 },
+    { id: 1, name: 'MASCULINO', value: 1 },
+    { id: 2, name: 'FEMENINO', value: 2 }
+  ]
   return (
     <section>
       <div className='grid grid-cols-6 gap-5 pb-5'>
         <InputFiel
           register={register}
           errors={errors}
-          labelText='Name'
-          name='name'
-          placeholder='Enter the name'
+          labelText='Nombre'
+          name='studentName'
+          placeholder='Nombre'
           requiredText='This field is required'
         />
         <InputFiel
           register={register}
           errors={errors}
-          labelText='Last Name'
-          name='lastName'
-          placeholder='Enter the last name'
+          labelText='Apellido'
+          name='studenLastName'
+          placeholder='Apellido'
           requiredText='This field is required'
         />
         <InputFiel
           register={register}
           errors={errors}
-          labelText="Guardian's Name"
+          labelText='Edad'
+          name='age'
+          placeholder='Edad'
+          requiredText='This field is required'
+        />
+      </div>
+      <div className='grid grid-cols-6 gap-5 pb-5'>
+        <InputFiel
+          register={register}
+          errors={errors}
+          labelText='Nombre del padre o madre'
           name='guardianName'
-          placeholder="Enter the guardian's name"
+          placeholder='Nombre del padre o madre'
           requiredText='This field is required'
         />
-      </div>
-      <div className='grid grid-cols-6 gap-5 pb-5'>
         <InputFiel
           register={register}
           errors={errors}
-          labelText='Phone'
+          labelText='Parentesco'
+          name='typeOfRelation'
+          placeholder='Parentesco'
+          requiredText='This field is required'
+        />
+        <InputFiel
+          register={register}
+          errors={errors}
+          labelText='Telefono'
           name='phone'
-          placeholder='Enter the phone number'
+          placeholder='Telefono'
           requiredText='This field is required'
-        />
-        <InputFiel
-          register={register}
-          errors={errors}
-          labelText='Email'
-          name='email'
-          placeholder='Enter the email'
-          requiredText='This field is required'
-        />
-        <InputSelect
-          labelText='Class Type'
-          name='classType'
-          control={control}
-          options={schedule}
         />
       </div>
       <div className='grid grid-cols-6 gap-5 pb-5'>
         <InputSelect
-          labelText='Payment Type'
-          name='paymentType'
+          register={register}
+          errors={errors}
           control={control}
-          options={payment}
+          name='gender'
+          labelText='Genero'
+          onChange={e => handleChangeName(e)}
+          options={gender}
         />
         <InputSelect
           register={register}
@@ -76,6 +91,16 @@ export function ModalContent ({
           name='level'
           labelText='Nivel'
           options={level}
+          onChange={e => handleChange(e, setLevelId)}
+        />
+        <InputSelect
+          register={register}
+          errors={errors}
+          control={control}
+          name='typeClass'
+          labelText='tipo de clase'
+          options={typeClass}
+          onChange={e => handleChange(e, setTypeClassId)}
         />
       </div>
     </section>

@@ -7,8 +7,8 @@ const { URL_DATABASE, USER_DB, PASS_DB, PORT_DB, NAME_DB } = process.env
 
 const sequelize = new Sequelize(`postgres://${USER_DB}:${PASS_DB}@${PORT_DB}/${NAME_DB}`, {
   logging: false,
-  native: false,
-});
+  native: false
+})
 
 /* const sequelize = new Sequelize(URL_DATABASE, {
   logging: false,

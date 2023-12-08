@@ -14,9 +14,12 @@ export function useStudents () {
         age: item.age,
         gender: item.gender,
         email: item.email,
+        start: item.email,
         phone: item.phone,
         guardianName: item.guardian_name,
         typeOfRelation: item.type_of_relation,
+        startHour: item.Schedules.start,
+        endHour: item.Schedules.end,
         schedules: item.Schedules.map(item => ({
           scheduleId: item.schedule_id,
           start: item.start,

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 export const Modal = ({ children, closeModal, title, onSubmit, className }) => {
   return (
-    <div className='fixed z-40 top-0 left-0 w-full h-screen bg-stone-500 bg-opacity-60 text-stone-600'>
+    <div className='fixed z-40 top-0 left-0 w-full h-screen bg-stone-500 bg-opacity-60 text-black font-bold'>
       <div className='flex justify-center items-center h-full'>
         <div className={className || 'flex flex-col justify-between bg-white rounded-md w-4/5 px-5 pb-5'}>
           {/* header */}

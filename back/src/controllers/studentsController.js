@@ -18,7 +18,7 @@ const studentsPost = async (studentName, studenLastName, age, gender, email, pho
     studen_last_name: studenLastName,
     age,
     gender,
-    email,
+    email, // dia de creacion
     phone,
     guardian_name: guardianName,
     type_of_relation: typeOfRelation
@@ -26,7 +26,7 @@ const studentsPost = async (studentName, studenLastName, age, gender, email, pho
   const scheduleBdd = await Schedule.findAll({ where: { schedule_id: scheduleId } })
   const levelBdd = await Level.findAll({ where: { level_id: levelId } })
   const typeclassBdd = await TypeClass.findAll({ where: { type_class_id: typeclassId } })
-  const paymentBdd = await Payment.findAll({ where: { payment_id: paymentId } })
+  const paymentBdd = await Payment.findAll({ where: { payment_id: 1 } })
 
   await newStudents.addSchedule(scheduleBdd)
   await newStudents.addLevel(levelBdd)

@@ -6,7 +6,7 @@ export function Button ({ text, handleClick, icon, className, type }) {
       onClick={handleClick}
       type={type}
     >
-      <div className='flex justify-between items-center gap-5'>
+      <div className='flex justify-between items-center gap-5 text-xl font-bold'>
         {text}
         {icon}
       </div>
