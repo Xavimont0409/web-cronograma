@@ -28,7 +28,7 @@ export function Nav ({ handleOpen, open }) {
         </div>
         {open
           ? (
-            <nav className='flex flex-col items-start gap-4'>
+            <nav className='flex flex-col items-start gap-4 font-bold text-xl'>
               <Link to='/home' className='flex gap-2 items-center justify-center'>
                 <Appointment /> Home
               </Link>

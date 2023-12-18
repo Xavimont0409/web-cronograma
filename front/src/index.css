@@ -303,7 +303,7 @@ html {
   text-align: center;
   text-transform: capitalize;
   font: inherit;
-  font-size: 0.75em;
+  font-size: 1em;
   font-weight: 500;
 }
 
@@ -316,7 +316,7 @@ html {
   align-items: center;
   justify-content: center;
   font: inherit;
-  font-size: 0.75em;
+  font-size: 1em;
   font-weight: bold;
 }
 
@@ -340,7 +340,7 @@ html {
   background: none;
   text-align: center;
   font: inherit;
-  font-size: 0.833em;
+  font-size: 1em;
   border-radius: 5px;
 }
 
